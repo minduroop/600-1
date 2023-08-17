@@ -1,0 +1,182 @@
+@charset "utf-8";
+
+@font-face {
+    font-family: 'Cafe24Ssurround';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/Cafe24Ssurround.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'HakgyoansimWoojuR';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/HakgyoansimWoojuR.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+body {
+    color: rgb(255, 240, 247);
+    line-height: 1;
+}
+
+.cont01 {
+    /* 반응형->위더스값 픽셀로 바로x 맥스위더스:픽셀 , 위더스:백퍼센트 */
+    max-width: 1360px;
+    width: 100%;
+    margin: 100px auto;
+}
+
+.cont01 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cont01 .list {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cont01 .list > div {
+    /* (꺽세) > div 하는이유 -> 리스트안에있는 자식에게만 이라는 명령 */
+    width: calc(100% / 3 - 15px);
+    height: 450px;
+    margin-bottom: 20px;
+    font-family: 'HakgyoansimWoojuR';
+}
+
+.cont01 .list > div:nth-child(2) {
+    order: -1;
+}
+
+.cont01 .list .title {
+
+    font-family: 'Cafe24Ssurround';
+
+    /* 그라디언트 gradient.io */
+    background: rgb(255, 0, 119);
+
+    padding: 50px 0;
+    
+    /* 글자 가운데 정렬 */
+    display: flex;
+    flex-wrap: wrap; /* 플랙스워랩에 워랩이 안먹힐때 강제로 떨어뜨리는 명령 -> flex-direction:column */
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+}
+
+
+.cont01 .list .item {
+    position: relative;
+}
+
+.cont01 .list .item:hover div {
+    /* 숨긴게 보임 */
+    opacity: 1;
+}
+
+.cont01 .list .item div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 194, 232, 0.616);
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 50px;
+
+    /* 높이값+패딩이 되도록 하는 명령 */
+    box-sizing: border-box;
+
+    /* 숨김 */
+    opacity: 0;
+
+    /* 숨긴게 부드럽게 보임 */
+    transition: 1s;
+}
+
+.cont01 .list .item div p {
+    color: dimgray;
+}
+
+.cont01 .list .item div strong {
+    display: block;
+    margin-top: 10px;
+    color: deeppink;
+}
+
+@media screen and (max-width:1024px) {
+
+    .cont01 .list > div {
+        /* 높이 초기화 */
+        height: auto;
+    }
+
+    .cont01 .list > div img {
+        /* height: 300px; */
+        height: 50vw; /* 브라우저 넓이의 반이라는 뜻 */
+        /* vw -> 브라우저 너비에 대응
+           vh -> 브라우저 높이에 대응 */
+    }
+
+    .cont01 .list .item div {
+        height: auto;
+        opacity: 1;
+        background-color: transparent; /* 배경색 투명하게 만들기 */
+        position: static; /* 포지션 앱솔루트 값 없애버림 */
+        padding-top: 5px;
+    }
+
+    .cont01 .list .item div strong {
+        margin-top: 3px;
+    }
+    
+}
+
+@media screen and (max-width:640px) {
+
+    body {
+        color: rgb(19, 19, 19);
+    }
+
+    .cont01 .list .title {
+        order: -2;
+        width: 100%;
+        padding: 50px 0;
+        /* 글자 가운데 정렬 */
+        display: flex;
+        flex-direction:column; /* 플랙스워랩에 워랩이 안먹힐때 강제로 떨어뜨리는 명령 -> flex-direction:column */
+        justify-content: center;
+        align-content: center;
+        text-align: center;
+    }
+    .cont01 .list .title p {
+        margin-top: 10px;
+    }
+
+    .cont01 .list > div {
+        /* (꺽세) > div 하는이유 -> 리스트안에있는 자식에게만 이라는 명령 */
+        width: calc(100% / 2 - 10px);
+    }
+
+    .cont01 .list .item div {
+        height: auto;
+    }
+
+}
